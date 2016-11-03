@@ -5,6 +5,13 @@ Respect la norme PSR-7.
 
 On va commencer de zéro sans utiliser le template proposer [https://github.com/slimphp/Slim-Skeleton](https://github.com/slimphp/Slim-Skeleton).   
 
+Lancer le serveur :
+ 
+```
+php -S localhost:8080 -t public
+```
+Possible de rajouter le flag -ddisplay_errors=1 pour le debug  
+
 
 
    
