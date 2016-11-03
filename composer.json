@@ -6,6 +6,11 @@
             "email": "richard.maxime9@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
     "require": {
         "slim/slim": "^3.5"
     }
