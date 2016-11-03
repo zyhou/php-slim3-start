@@ -14,6 +14,6 @@ class PagesController {
     }
 
     public  function home(RequestInterface $request, ResponseInterface $response){
-       $response->getBody()->write('Bonjour !');
+        $this->container->view->render($response, 'pages/home.twig');
     }
 }
