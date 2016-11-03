@@ -12,6 +12,7 @@ php -S localhost:8080 -t public
 ```
 Possible de rajouter le flag -ddisplay_errors=1 pour le debug  
 
+Lien vers la documentation officielle : [http://www.slimframework.com/docs/](http://www.slimframework.com/docs/)
 
 
    
