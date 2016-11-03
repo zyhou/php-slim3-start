@@ -16,4 +16,8 @@ class PagesController {
     public  function home(RequestInterface $request, ResponseInterface $response){
         $this->container->view->render($response, 'pages/home.twig', ['name' => 'Max']);
     }
+
+    public  function getContact(RequestInterface $request, ResponseInterface $response){
+        $this->container->view->render($response, 'pages/contact.twig');
+    }
 }
