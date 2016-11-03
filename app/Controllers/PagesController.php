@@ -14,6 +14,6 @@ class PagesController {
     }
 
     public  function home(RequestInterface $request, ResponseInterface $response){
-        $this->container->view->render($response, 'pages/home.twig');
+        $this->container->view->render($response, 'pages/home.twig', ['name' => 'Max']);
     }
 }
