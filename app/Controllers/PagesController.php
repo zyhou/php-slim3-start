@@ -7,11 +7,16 @@ use Psr\Http\Message\ResponseInterface;
 
 class PagesController extends Controller {
 
-    public  function home(RequestInterface $request, ResponseInterface $response){
+    public function home(RequestInterface $request, ResponseInterface $response){
         $this->render($response, 'pages/home.twig', ['name' => 'Max']);
     }
 
-    public  function getContact(RequestInterface $request, ResponseInterface $response){
+    public function getContact(RequestInterface $request, ResponseInterface $response){
         $this->render($response, 'pages/contact.twig');
+    }
+
+    public function postContact(RequestInterface $request, ResponseInterface $response){
+        var_dump($request->getParams());
+        die();
     }
 }
