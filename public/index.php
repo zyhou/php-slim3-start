@@ -12,7 +12,7 @@ class DemoMiddleware {
     }
 }
 
-class DataBaseContainer{
+class DataBaseContainer {
 
     /**
      * @var PDO
@@ -27,6 +27,22 @@ class DataBaseContainer{
         $req = $this->pdo->prepare($sql);
         $req->execute();
         return $req->fetchAll();
+    }
+}
+
+class PagesController {
+
+    private $container;
+
+    public function __construct($container)
+    {
+        $this->container = $container;
+    }
+
+    public  function salut(\Slim\Http\Request $request, \Slim\Http\Response $response, $args){
+        $posts = $this->container->db->query("select * from posts");
+        var_dump($posts);
+        return $response->write("Bonjour ".$args['nom']);
     }
 }
 
@@ -45,12 +61,6 @@ $container['db'] = function($container) {
 
 $app->add(new DemoMiddleware());
 
-
-$app->get('/salut/{nom}', function(\Slim\Http\Request $request, \Slim\Http\Response $response, $args) {
-    $posts = $this->db->query("select * from posts");
-    var_dump($posts);
-    return $response->write("Bonjour ".$args['nom']);
-});
-
+$app->get('/salut/{nom}', 'PagesController:salut');
 
 $app->run();
