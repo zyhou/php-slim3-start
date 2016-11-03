@@ -13,14 +13,24 @@ class DemoMiddleware {
 }
 
 $app = new \Slim\App();
+
+$container = $app->getContainer();
+$container['pdo'] = function() {
+    $pdo = new PDO('mysql:dbname=slim3;host=localhost', 'root');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    return $pdo;
+};
+
 $app->add(new DemoMiddleware());
 
-$app->get('/', function(\Slim\Http\Request $request, \Slim\Http\Response $response) {
-    return $response->getBody()->write("Bonjour les gens.");
-});
 
 $app->get('/salut/{nom}', function(\Slim\Http\Request $request, \Slim\Http\Response $response, $args) {
-    return $response->getBody()->write("Bonjour ".$args['nom']);
+    $req = $this->pdo->prepare("select * from posts");
+    $req->execute();
+    $posts = $req->fetchAll();
+    var_dump($posts);
+
+    return $response->write("Bonjour ".$args['nom']);
 });
 
 
