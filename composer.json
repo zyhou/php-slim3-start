@@ -1,0 +1,10 @@
+{
+    "name": "max/php-slim3-start",
+    "authors": [
+        {
+            "name": "Maxime",
+            "email": "richard.maxime9@gmail.com"
+        }
+    ],
+    "require": {}
+}
