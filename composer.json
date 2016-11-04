@@ -13,6 +13,7 @@
     },
     "require": {
         "slim/slim": "^3.5",
-        "slim/twig-view": "^2.1"
+        "slim/twig-view": "^2.1",
+        "swiftmailer/swiftmailer": "^5.4"
     }
 }
