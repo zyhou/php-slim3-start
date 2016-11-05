@@ -17,7 +17,14 @@ class PagesController extends Controller {
 
     public function postContact(RequestInterface $request, ResponseInterface $response){
 
-        $this->flash('Votre message a bien été envoyé');
+        if(false) {
+            $this->flash('Votre message a bien été envoyé');
+
+        } else {
+            $this->flash('Certains champs n\'ont pas été rempli correctement', 'error');
+
+        }
+
 
       /*  $message = \Swift_Message::newInstance('Message de contact')
                     ->setFrom([$request->getParam('email') => $request->getParam('name')])
