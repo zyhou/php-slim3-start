@@ -3,6 +3,14 @@
 {%  block content %}
     <h1>Me Contacter</h1>
 
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus adipisci beatae consectetur culpa deleniti, dignissimos distinctio doloribus et excepturi facilis id laboriosam maxime omnis possimus quasi quis, repellendus sit!</p>
+
+    {% if flash.success %}
+        <div class="alert alert-success">
+            {{ flash.success }}
+        </div>
+    {% endif %}
+
     <form action="{{ path_for('contact') }}" method="post">
 
         <div class="form-group">

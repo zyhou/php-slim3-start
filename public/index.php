@@ -1,6 +1,10 @@
 <?php
 
+use App\Controllers\PagesController;
+
 require '../vendor/autoload.php';
+
+session_start();
 
 $app = new \Slim\App([
     'setting' => [
@@ -10,8 +14,8 @@ $app = new \Slim\App([
 
 require('../app/container.php');
 
-$app->get('/', App\Controllers\PagesController::class . ':home');
-$app->get('/nous-contacter', App\Controllers\PagesController::class . ':getContact')->setName('contact');
-$app->post('/nous-contacter', App\Controllers\PagesController::class . ':postContact');
+$app->get('/', PagesController::class . ':home');
+$app->get('/nous-contacter', PagesController::class . ':getContact')->setName('contact');
+$app->post('/nous-contacter', PagesController::class . ':postContact');
 
 $app->run();

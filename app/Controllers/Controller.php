@@ -12,8 +12,8 @@ class Controller {
         $this->container = $container;
     }
 
-    public  function render(ResponseInterface $response, $file){
-        $this->container->view->render($response, $file);
+    public  function render(ResponseInterface $response, $file, $params = []){
+        $this->container->view->render($response, $file, $params);
     }
 
     public function redirect($response, $name) {
