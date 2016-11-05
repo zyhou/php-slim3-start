@@ -19,6 +19,8 @@ $container = $app->getContainer();
 //Middleware
 $app->add(new \App\Middlewares\FlashMiddleware($container->view->getEnvironment()));
 $app->add(new \App\Middlewares\OldMiddleware($container->view->getEnvironment()));
+$app->add(new \App\Middlewares\TwigCsrfMiddleware($container->view->getEnvironment(), $container->crsf));
+$app->add($container->crsf);
 
 $app->get('/', PagesController::class . ':home')->setName('home');
 $app->get('/nous-contacter', PagesController::class . ':getContact')->setName('contact');
