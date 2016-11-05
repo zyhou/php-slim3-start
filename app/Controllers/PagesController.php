@@ -12,16 +12,12 @@ class PagesController extends Controller {
     }
 
     public function getContact(RequestInterface $request, ResponseInterface $response){
-        $flash = isset($_SESSION['flash']) ? $_SESSION['flash'] : [];
-        $_SESSION['flahs'] = [];
-        return $this->render($response, 'pages/contact.twig', ['flash' => $flash]);
+        return $this->render($response, 'pages/contact.twig');
     }
 
     public function postContact(RequestInterface $request, ResponseInterface $response){
 
-        $_SESSION['flash'] = [
-            'success' => 'Votre message a bien été envoyé'
-        ];
+        $this->flash('Votre message a bien été envoyé');
 
       /*  $message = \Swift_Message::newInstance('Message de contact')
                     ->setFrom([$request->getParam('email') => $request->getParam('name')])
@@ -30,6 +26,6 @@ class PagesController extends Controller {
                     {$request->getParam('content')}");
 
         $this->mailer->send($message);*/
-        return $this->redirect($response, 'contact');
+       return $this->redirect($response, 'contact');
     }
 }
