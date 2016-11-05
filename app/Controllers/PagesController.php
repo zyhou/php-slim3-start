@@ -16,7 +16,13 @@ class PagesController extends Controller {
     }
 
     public function postContact(RequestInterface $request, ResponseInterface $response){
-        var_dump($request->getParams());
-        die();
+        $message = \Swift_Message::newInstance('Message de contact')
+                    ->setFrom([$request->getParam('email') => $request->getParam('name')])
+                    ->setTo('contact@monsite.fr')
+                    ->setBody("Un email vous a été envoyé :
+                    {$request->getParam('content')}");
+
+        $this->mailer->send($message);
+        return $this->redirect($response, 'contact');
     }
 }
